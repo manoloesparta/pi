@@ -9,7 +9,7 @@ url = 'https://api.pi.delivery/v1/pi'
 batch = 100000000
 
 def getdigits(part, start, end):
-	with open(f'num/part{part}', 'a+') as f:
+	with open(f'api/num/part{part}', 'a+') as f:
 		for i in tqdm(range(start, end, 1000)):
 			
 			params = {

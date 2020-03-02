@@ -4,3 +4,5 @@ node_modules/
 *.pyc
 num/
 .vscode/
+api/api
+.now/

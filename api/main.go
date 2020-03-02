@@ -1,12 +1,28 @@
 package main
 
 import (
-	"fmt"
+	"encoding/json"
+	"net/http"
 
-	"github.com/maybemanolo/pi/api/search"
+	"github.com/gorilla/mux"
+	"github.com/maybemanolo/api/search"
 )
 
 func main() {
-	index, length := search.AllResults("663270532")
-	fmt.Println(index, length)
+	router := mux.NewRouter()
+	router.HandleFunc("/pi/{number}", pihandler)
+	http.ListenAndServe(":8080", router)
+}
+
+func pihandler(w http.ResponseWriter, r *http.Request) {
+	vars := mux.Vars(r)
+	num := vars["number"]
+	res, index := search.Get(num)
+	o := out{index, res}
+	json.NewEncoder(w).Encode(o)
+}
+
+type out struct {
+	Index int    `json:"index"`
+	Text  string `json:"text"`
 }
