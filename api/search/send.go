@@ -30,7 +30,8 @@ func contentOfFile(fileNum int) string {
 
 func makeString(digits int, index int, content *string) string {
 	var sb strings.Builder
-	for i := -128; i < 128; i++ {
+	start, end := getBounds(index)
+	for i := start; i < end; i++ {
 		if i == 0 {
 			sb.WriteString("s")
 		} else if i == digits {
@@ -39,4 +40,11 @@ func makeString(digits int, index int, content *string) string {
 		sb.WriteByte((*content)[index+i])
 	}
 	return sb.String()
+}
+
+func getBounds(index int) (int, int) {
+	if index-128 < 0 {
+		return 0, 256
+	}
+	return -128, 128
 }
