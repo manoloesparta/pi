@@ -29,6 +29,12 @@ footer {
   font-size: 34px;
 }
 
+@media only screen and (max-width: 768px) {
+  #output {
+    font-size: 30px;
+  }
+}
+
 #output h2 {
   text-align: center;
 }

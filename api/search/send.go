@@ -12,15 +12,17 @@ const chunkSize int = 128
 // Get get the string that will be displayed
 func Get(input string) (string, int) {
 	index, digits := allResults(input)
+
 	fileNum := 0
+	localindex := index
 
 	if index > digitsOfFile {
 		fileNum = index / digitsOfFile
-		index = index - (fileNum * digitsOfFile)
+		localindex = index - (fileNum * digitsOfFile)
 	}
 
 	content := contentOfFile(fileNum)
-	res := makeString(digits, index, &content)
+	res := makeString(digits, localindex, &content)
 
 	return res, index
 }
