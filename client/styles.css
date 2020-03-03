@@ -1,0 +1,38 @@
+* {
+  font-family: 'Oxanium';
+}
+
+#numberInput {
+  border-radius: 10px;
+  border: 3px solid black;
+  padding: 10px;
+  font-size: 30px;
+}
+
+#numberInput:focus {
+  outline: none;
+}
+
+#numberBtn {
+  font-size: 30px
+}
+
+footer {
+  bottom: 0;
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  font-size: 20px;
+}
+
+#output {
+  font-size: 34px;
+}
+
+#output h2 {
+  text-align: center;
+}
+
+.num {
+  background-color: #FFFF00;
+}

@@ -22,7 +22,6 @@ func pihandler(w http.ResponseWriter, r *http.Request) {
 	num := vars["number"]
 	res, index := search.Get(num)
 	out := out{index, res}
-	fmt.Println(r)
 	json.NewEncoder(w).Encode(out)
 }
 
