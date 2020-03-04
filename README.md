@@ -1,6 +1,6 @@
 <p align="center">
   <a>
-    <img style="border-radius: 10px" width="200px" src="logo.png" alt="PI and me" />
+    <img width="200px" src="logo.jpg" alt="PI and me" />
     <h1 align="center">PI and me</h1>
   </a>
 </p>

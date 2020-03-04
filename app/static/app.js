@@ -8,7 +8,7 @@ btn.addEventListener('click', () => {
   loading.classList.remove('hidden')
   clean()
   
-  fetch('http://localhost:8080/pi/' + data)
+  fetch('http://localhost:80/pi/' + data)
 
   .then((res) => res.json())
   
