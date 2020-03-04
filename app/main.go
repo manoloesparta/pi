@@ -11,9 +11,10 @@ import (
 
 func main() {
 	router := mux.NewRouter()
-	router.HandleFunc("/pi/{number}", pihandler)
+	router.HandleFunc("/pi/{number}", piHandler)
+	router.PathPrefix("/").Handler(http.StripPrefix("/", http.FileServer(http.Dir("static/"))))
 	fmt.Println(":8080 serving")
-	http.ListenAndServe(":8080", http.StripPrefix("/static/", http.FileServer(http.Dir("static"))))
+	http.ListenAndServe(":8080", router)
 }
 
 type out struct {
@@ -21,11 +22,15 @@ type out struct {
 	Text  string `json:"text"`
 }
 
-func pihandler(w http.ResponseWriter, r *http.Request) {
+func piHandler(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Access-Control-Allow-Origin", "*")
 	vars := mux.Vars(r)
 	num := vars["number"]
 	res, index := search.Get(num)
 	out := out{index, res}
 	json.NewEncoder(w).Encode(out)
+}
+
+func indexHandler() {
+
 }
