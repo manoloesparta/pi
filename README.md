@@ -27,7 +27,7 @@ This was created to celebrate the PI day, March 14. You can visit it right [here
 
 ## What this does?
 
-You give it some input (a numerical input), for example your phone number, and searches it in the first billion digits of PI. If it doesn't find it complete, then it pops that last digit until it found one coincidence.
+You give it some input (a numerical input), for example your phone number, and searches it in the first billion digits of PI. If it doesn't find it complete, it will pop the last digit until it found one coincidence.
 
 ## Where did you get the digits?
 
