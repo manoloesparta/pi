@@ -4,11 +4,11 @@ const output = document.getElementById('output')
 const loading = document.getElementById('lds-ring')
 
 btn.addEventListener('click', () => {
-  let data = input.value
-  loading.classList.remove('hidden')
   clean()
+  loading.classList.remove('hidden')
+  let data = input.value
   
-  fetch('http://localhost:8080/pi/' + data)
+  fetch('https://api.pieandme.com/pi/' + data)
 
   .then((res) => res.json())
   
@@ -40,6 +40,8 @@ input.addEventListener('keyup', (event) => {
 
 function clean() {
   output.innerHTML = ''
+  input.value = input.value.replace( /\D+/g, '')
+  console.log(input.value)
 }
 
 function clearStr(msg) {
