@@ -36,7 +36,6 @@ Believe or not, it is hard to download more than 1 million digits of PI, so you 
 ## Requirements to Run Locally
 ```
 Go 1.13
-Python 3.7
 ```
 
 ## Local Build
@@ -47,6 +46,17 @@ cd api
 go run main.go&
 cd ../client
 open index.html
+```
+
+## Requirements to Download Digits
+```
+Python 3.7
+```
+
+## Local Download of Digits
+```bash
+pip install -r requirements.txt
+python3 collect.py
 ```
 
 ## Contributing
