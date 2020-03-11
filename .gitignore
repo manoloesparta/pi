@@ -5,3 +5,5 @@ node_modules/
 .vscode/
 api/api
 .now/
+.DS_Store
+__MACOSX/
