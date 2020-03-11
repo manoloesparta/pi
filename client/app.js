@@ -4,11 +4,12 @@ const output = document.getElementById('output')
 const loading = document.getElementById('lds-ring')
 
 btn.addEventListener('click', () => {
+  
+  clean()
   if(input.value.trim() == '') {
     return 0;
   }
   
-  clean()
   let data = input.value
   loading.classList.remove('hidden')
   
