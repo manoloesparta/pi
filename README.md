@@ -44,7 +44,7 @@ Python 3.7
 ```bash
 git clone https://github.com/maybemanolo/pi
 cd api
-go run main.go
+go run main.go&
 cd ../client
 open index.html
 ```
