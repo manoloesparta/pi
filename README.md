@@ -19,7 +19,7 @@
 
 > How much PI knows about you
 
-A popular phrase said that inside of PI is everything that has happened, is happening and will happen. For example where you were and when you are going to die. But if you know a little about the properties of PI you can come to the conclusion that there is no pattern in the way of new decimals arrive, in a sort of way those digits are random.
+A popular phrase said that inside of PI is everything that has happened, is happening and will happen. For example where you were born and when you are going to die. But if you know a little about the properties of PI you can come to the conclusion that there is no pattern in the way of new decimals arrive, in a sort of way those digits are random.
 
 What does this mean? First of all PI is irational meaning that there are infinite decimals, so if you have infinite numbers at a random order, chances are that everything real-world related is going to appear in PI. From there comes the inspiration for this little project.
 
