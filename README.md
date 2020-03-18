@@ -23,7 +23,7 @@ A popular phrase said that inside of PI is everything that has happened, is happ
 
 What does this mean? First of all PI is irational meaning that there are infinite decimals, so if you have infinite numbers at a random order, chances are that everything real-world related is going to appear in PI. From there comes the inspiration for this little project.
 
-This was created to celebrate the PI day, March 14. You can visit it right [here](https://pieandme.com).
+This was created to celebrate the PI day, March 14.
 
 ## What this does?
 
