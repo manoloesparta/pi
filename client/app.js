@@ -13,7 +13,7 @@ btn.addEventListener('click', () => {
   let data = input.value
   loading.classList.remove('hidden')
   
-  fetch('https://api.pieandme.com/pi/' + data)
+  fetch('http://localhost:8080/pi/' + data)
 
   .then((res) => res.json())
   
