@@ -31,7 +31,7 @@ func fullScan(input string) (int, error) {
 }
 
 func singleSearch(input string, fileindex int) (int, error) {
-	f := "num/part" + strconv.Itoa(fileindex)
+	f := "./num/part" + strconv.Itoa(fileindex)
 	file, _ := ioutil.ReadFile(f)
 	content := string(file)
 	index := strings.Index(content, input)
