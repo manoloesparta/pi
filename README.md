@@ -31,16 +31,17 @@ Believe or not, it is hard to download more than 1 million digits of PI, so you 
 ```
 Go 1.13
 Python 3.7
+or
+Docker 19.03
+Docker Compose 1.25
 ```
 
 ## Local Build
 > Note that the download will take way longer than usual because the size of the billion digits is around 1GB
 ```bash
-git clone https://github.com/maybemanolo/pi
-cd api
-go run main.go&
-cd ../client
-open index.html
+git clone https://github.com/maybemanolo/pi && cd pi
+docker-compose up
+open client/index.html
 ```
 
 ## Contributing
