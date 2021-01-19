@@ -1,56 +1,49 @@
+// Elements
 const btn = document.getElementById('numberBtn')
 const input = document.getElementById('numberInput')
 const output = document.getElementById('output')
 const loading = document.getElementById('lds-ring')
 
-btn.addEventListener('click', () => {
-  
+// Functions
+const clean = () => {
+  output.innerHTML = ''
+  input.value = input.value.trim().replace(/\D+/g, '')
+}
+
+const randomDecimal = () => Math.floor(Math.random() * 10)
+const random256 = () => crypto.getRandomValues(new Uint8Array(256)).join('').substring(0,256).split('').join(' ')
+
+// Event listener
+btn.addEventListener('click', async () => {
+
   clean()
-  if(input.value.trim() == '') {
-    return 0;
-  }
-  
-  let data = input.value
-  loading.classList.remove('hidden')
-  
-  fetch('http://localhost:8080/pi/' + data)
+  if(input.value.trim() == '') return
 
-  .then((res) => res.json())
-  
-  .then((data) => {
-    loading.classList.add('hidden')
+  try {
 
-    let index = data['index']
-    let msg =  data['text'] + ' ...'
-    if(index != 0) {
-      msg = '...' + msg
-    }
+    const inputVal = input.value
+    loading.classList.remove('hidden')
 
-    output.innerHTML = "<h2>your number was found at index " + index + "</h2><br>"
-    output.innerHTML += clearStr(msg)
-  })
+    const response = await fetch(`http://localhost:8080/pi/${inputVal}`)
+    const json = await response.json()
 
-  .catch(() => {
-    loading.classList.add('hidden')
+    let { index, text } = json
+
+    if (index != 0) text = '...' + text
+    output.innerHTML = `<h2>your number was found at index ${index}</h2><br>`
+    output.innerHTML += text.replace('s', ' <span class=\'num\'>').replace('e', '</span>')
+    
+  } catch {
     alert('something went wrong, try again')
-  })
+  }
+
+  loading.classList.add('hidden')
 })
 
+// Use key enter to search
 input.addEventListener('keyup', (event) => {
   if(event.keyCode === 13) {
     event.preventDefault();
     btn.click()
   }
 })
-
-function clean() {
-  output.innerHTML = ''
-  input.value = input.value.trim().replace(/\D+/g, '')
-  console.log(input.value)
-}
-
-function clearStr(msg) {
-  let tmp = msg.replace('s', ' <span class=\'num\'>')
-  let final = tmp.replace('e', '</span>')
-  return final
-}
