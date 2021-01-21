@@ -24,7 +24,7 @@ btn.addEventListener('click', async () => {
     const inputVal = input.value
     loading.classList.remove('hidden')
 
-    const response = await fetch(`http://localhost:8080/pi/${inputVal}`)
+    const response = await fetch(`https://piapi.manoloesparta.com/pi/${inputVal}`)
     const json = await response.json()
 
     let { index, text } = json
