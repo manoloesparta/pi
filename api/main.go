@@ -1,31 +1,61 @@
 package main
 
 import (
+	"context"
 	"encoding/json"
-	"fmt"
 	"net/http"
 
-	"github.com/gorilla/mux"
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
 	"github.com/maybemanolo/api/search"
 )
 
-func main() {
-	router := mux.NewRouter()
-	router.HandleFunc("/pi/{number}", piHandler)
-	fmt.Println(":8080 serving")
-	http.ListenAndServe(":8080", router)
-}
-
-type out struct {
+type EventResponse struct {
 	Index int    `json:"index"`
 	Text  string `json:"text"`
 }
 
-func piHandler(w http.ResponseWriter, r *http.Request) {
-	w.Header().Set("Access-Control-Allow-Origin", "*")
-	vars := mux.Vars(r)
-	num := vars["number"]
-	res, index := search.Get(num)
-	out := out{index, res}
-	json.NewEncoder(w).Encode(out)
+type EventRequest struct {
+	Number string `json:"number"`
+}
+
+func apiGWHandler(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	var evtReq EventRequest
+	err := json.Unmarshal([]byte(req.Body), &evtReq)
+	if err != nil {
+		return apiGWResponse("", 0, http.StatusInternalServerError, err), err
+	}
+	number, index := search.Get(evtReq.Number)
+	return apiGWResponse(number, index, http.StatusOK, nil), nil
+}
+
+func apiGWResponse(result string, index int, status int, err error) events.APIGatewayProxyResponse {
+	resp := events.APIGatewayProxyResponse{
+		StatusCode: status,
+		Headers: map[string]string{
+			"Content-Type": "application/json",
+		},
+	}
+
+	if err != nil {
+		resp.Body = err.Error()
+		return resp
+	}
+
+	evtResp := EventResponse{
+		Index: index,
+		Text:  result,
+	}
+
+	data, err := json.Marshal(evtResp)
+	if err != nil {
+		resp.StatusCode = http.StatusInternalServerError
+		resp.Body = err.Error()
+	}
+	resp.Body = string(data)
+	return resp
+}
+
+func main() {
+	lambda.Start(apiGWHandler)
 }

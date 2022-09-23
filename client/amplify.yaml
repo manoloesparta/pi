@@ -1,0 +1,92 @@
+AWSTemplateFormatVersion: 2010-09-09
+Description: Template for pi and me project
+
+Parameters:
+
+  Repository:
+    Type: String
+    Description: GitHub repository URL
+    Default: https://github.com/manoloesparta/pi
+
+  OauthToken:
+    Type: String
+    Description: GitHub access token
+    NoEcho: true
+
+  Domain:
+    Type: String
+    Description: Domain name for application
+    Default: mano.lol
+
+Resources:
+
+  AmplifyRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: 2012-10-17
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service:
+                - amplify.amazonaws.com
+            Action:
+              - sts:AssumeRole
+      Policies:
+        - PolicyName: Amplify
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: "amplify:*"
+                Resource: "*"
+
+  AmplifyApp:
+    Type: AWS::Amplify::App
+    Properties:
+      Name: manolol pi
+      Repository: !Ref Repository
+      Description: Frontend for the pi and me project
+      OauthToken: !Ref OauthToken
+      BuildSpec: |-
+        version: 1
+        frontend:
+          phases:
+            build:
+              commands:
+                - cd client
+          artifacts:
+            baseDirectory: client
+            files:
+              - "**/*"
+      IAMServiceRole: !GetAtt AmplifyRole.Arn
+
+  MainBranch:
+    Type: AWS::Amplify::Branch
+    Properties:
+      BranchName: master
+      AppId: !GetAtt AmplifyApp.AppId
+      Description: Main Branch
+      EnableAutoBuild: true
+
+  AmplifyDomain:
+    Type: AWS::Amplify::Domain
+    Properties:
+      DomainName: !Ref Domain
+      AppId: !GetAtt AmplifyApp.AppId
+      SubDomainSettings:
+        - Prefix: pi
+          BranchName: !GetAtt MainBranch.BranchName
+
+  EcrRepository: 
+    Type: AWS::ECR::Repository
+    Properties: 
+      RepositoryName: "piandme"
+
+Outputs:
+
+  DefaultDomain:
+    Value: !GetAtt AmplifyApp.DefaultDomain
+
+  MainBranchUrl:
+    Value: !Join [ ".", [ !GetAtt MainBranch.BranchName, !GetAtt AmplifyDomain.DomainName ]]

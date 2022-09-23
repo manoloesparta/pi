@@ -23,8 +23,16 @@ btn.addEventListener('click', async () => {
 
     const inputVal = input.value
     loading.classList.remove('hidden')
+    
+    const config = {
+      method: 'POST',
+      body: JSON.stringify({numer: inputVal}),
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    }
 
-    const response = await fetch(`https://piapi.manoloesparta.com/pi/${inputVal}`)
+    const response = await fetch(`https://0ctttl79x8.execute-api.us-east-1.amazonaws.com/default/`, config)
     const json = await response.json()
 
     let { index, text } = json

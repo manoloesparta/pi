@@ -1,15 +1,11 @@
-FROM golang:1.13-alpine
-
-WORKDIR /build
-
-COPY go.mod .
-COPY go.sum .
-RUN go mod download
+FROM public.ecr.aws/lambda/go:1
 
 COPY . .
 
-RUN go build -o main .
+RUN go get
 
-EXPOSE 8080 
+RUN GOOS=linux go build
 
-CMD ["/build/main"]
+COPY api ${LAMBDA_TASK_ROOT}
+
+CMD [ "api" ]
