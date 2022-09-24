@@ -1,0 +1,34 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Description: Server for pi and me
+
+Globals:
+  Function:
+    Timeout: 30
+    Tracing: Active
+    MemorySize: 1024
+    EphemeralStorage: 
+      Size: 1024
+  Api:
+    TracingEnabled: True
+
+Resources:
+  SearchPiFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      PackageType: Image
+      ImageUri: 922586731243.dkr.ecr.us-east-1.amazonaws.com/piandme:latest
+      Architectures:
+        - x86_64
+      Events:
+        CatchAll:
+          Type: Api
+          Properties:
+            Path: /
+            Method: POST
+
+Outputs:
+  SearchPiEndpoint:
+    Description: API Gateway endpoint URL
+    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
+
