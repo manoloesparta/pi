@@ -25,9 +25,10 @@ You give it some input (a numerical input), for example your phone number, and s
 
 ## Where did you get the digits?
 
-Believe or not, it is hard to download more than 1 million digits of PI, so you can see in the root directory a file named *collect.py* that connects to an API so it can download the first billion digits.
+Believe or not, it is hard to download more than 1 million digits of PI, so you can see in the root directory a file named _collect.py_ that connects to an API so it can download the first billion digits.
 
 ## Requirements to Run Locally
+
 ```
 Go 1.13
 Python 3.7
@@ -37,7 +38,9 @@ Docker Compose 1.25
 ```
 
 ## Local Build
+
 > Note that the download will take way longer than usual because the size of the billion digits is around 1GB
+
 ```bash
 git clone https://github.com/maybemanolo/pi && cd pi
 docker-compose up
@@ -45,7 +48,9 @@ open client/index.html
 ```
 
 ## Contributing
+
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
+
 This project is licensed under the MIT License

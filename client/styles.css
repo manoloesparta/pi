@@ -1,5 +1,5 @@
 * {
-  font-family: 'Oxanium';
+  font-family: "Oxanium";
 }
 
 #numberInput {
@@ -14,7 +14,7 @@
 }
 
 #numberBtn {
-  font-size: 30px
+  font-size: 30px;
 }
 
 footer {
@@ -40,7 +40,7 @@ footer {
 }
 
 .num {
-  background-color: #FFFF00;
+  background-color: #ffff00;
 }
 
 .hidden {
@@ -67,10 +67,10 @@ a {
   width: 64px;
   height: 64px;
   margin: 8px;
-  border: 8px solid #007BFF;
+  border: 8px solid #007bff;
   border-radius: 50%;
   animation: lds-ring 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
-  border-color: #007BFF transparent transparent transparent;
+  border-color: #007bff transparent transparent transparent;
 }
 
 .lds-ring div:nth-child(1) {
@@ -100,6 +100,6 @@ input::-webkit-inner-spin-button {
   margin: 0;
 }
 
-input[type=number] {
-  -moz-appearance:textfield;
+input[type="number"] {
+  -moz-appearance: textfield;
 }

@@ -1,4 +1,4 @@
-AWSTemplateFormatVersion: '2010-09-09'
+AWSTemplateFormatVersion: "2010-09-09"
 Transform: AWS::Serverless-2016-10-31
 Description: Server for pi and me
 
@@ -7,7 +7,7 @@ Globals:
     Timeout: 30
     Tracing: Active
     MemorySize: 1024
-    EphemeralStorage: 
+    EphemeralStorage:
       Size: 1024
   Api:
     TracingEnabled: True
@@ -31,4 +31,3 @@ Outputs:
   SearchPiEndpoint:
     Description: API Gateway endpoint URL
     Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
-

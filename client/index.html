@@ -1,46 +1,66 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>pi and me</title>
-  <link rel='shortcut icon' type='image/png' href='favicon.png' />
-  
-  <link href="https://fonts.googleapis.com/css?family=Oxanium&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-  <link rel="stylesheet" type="text/css" href="styles.css">
-  
-  <script defer src="app.js"></script>
-</head>
-<body>
-  
-  <section class="container mt-5">
-    <div class="row justify-content-md-center">
-      <div class="col-lg-8">
-        <h1>pi and me</h1>
-        <div class="input-group">
-          <input id="numberInput" type="text" maxlength="20" placeholder="type a number" class="form-control" autocomplete="off">
-          <input id="numberBtn" type="button" class="btn btn-primary ml-3" value="submit">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>pi and me</title>
+    <link rel="shortcut icon" type="image/png" href="favicon.png" />
+
+    <link
+      href="https://fonts.googleapis.com/css?family=Oxanium&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+
+    <script defer src="app.js"></script>
+  </head>
+  <body>
+    <section class="container mt-5">
+      <div class="row justify-content-md-center">
+        <div class="col-lg-8">
+          <h1>pi and me</h1>
+          <div class="input-group">
+            <input
+              id="numberInput"
+              type="text"
+              maxlength="20"
+              placeholder="type a number"
+              class="form-control"
+              autocomplete="off"
+            />
+            <input
+              id="numberBtn"
+              type="button"
+              class="btn btn-primary ml-3"
+              value="submit"
+            />
+          </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <main class="container mt-5" id="numberDisplay">
-    <div class="text-center">
-      <div id="lds-ring" class="lds-ring hidden">
-        <div></div><div></div><div></div><div></div>
+    <main class="container mt-5" id="numberDisplay">
+      <div class="text-center">
+        <div id="lds-ring" class="lds-ring hidden">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
       </div>
-    </div>
-    <div id="output">
-    </div>
-  </main>
+      <div id="output"></div>
+    </main>
 
-  <footer class="container text-center">
-    <a href="https://github.com/manoloesparta/pi" target="_blank">what is this?</a>
-    <a href="https://mano.lol/" target="_blank">who am i?</a>
-  </footer>
-
-</body>
+    <footer class="container text-center">
+      <a href="https://github.com/manoloesparta/pi" target="_blank"
+        >what is this?</a
+      >
+      <a href="https://mano.lol/" target="_blank">who am i?</a>
+    </footer>
+  </body>
 </html>
